@@ -1,0 +1,9 @@
+{
+  "_readme": "Site-wide settings. 'url' must be the final public address (used for link previews). 'otherEssays' appear in the footer.",
+  "url": "https://anubhavlfc.github.io/Growing-up-with-Cole/",
+  "description": "A personal essay by Anubhav Adhikari about growing up with J. Cole's music, from first hearing it as a teenager in Nepal to hearing \"Love Yourz\" live at Madison Square Garden.",
+  "themeColor": "#100d0b",
+  "otherEssays": [
+    { "title": "Not the Final Form", "url": "https://anubhavlfc.github.io/AI-and-Consciousness/not-the-final-form/" }
+  ]
+}

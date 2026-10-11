@@ -1,0 +1,11 @@
+{
+  "name": "growing-up-with-j-cole",
+  "private": true,
+  "description": "Growing Up With J. Cole, a personal essay by Anubhav Adhikari.",
+  "type": "module",
+  "scripts": {
+    "images": "python3 scripts/optimize_images.py",
+    "build": "python3 scripts/optimize_images.py && node build.mjs",
+    "dev": "node build.mjs --serve"
+  }
+}

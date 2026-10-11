@@ -1,0 +1,59 @@
+{
+  "_readme": "Every photo the site uses is listed here. 'file' is a file in /photos. 'crop' (optional) is [left, top, right, bottom] as fractions of the original. 'caption' and 'credit' are optional and shown under the photo when set. Run `npm run build` after changing anything.",
+
+  "hero": {
+    "file": "arena-from-the-upper-level.jpg",
+    "alt": "Looking down from the upper level of a packed arena glowing amber, a J. Cole Fall-Off Tour towel held up in the foreground.",
+    "focus": "50% 45%",
+    "caption": "",
+    "credit": ""
+  },
+  "crowd-entrance": {
+    "file": "cole-among-the-crowd.jpg",
+    "alt": "Black-and-white photo of J. Cole rapping from the middle of the crowd, surrounded by fans holding up phones, with only his face and hand in warm colour.",
+    "caption": "",
+    "credit": ""
+  },
+  "journey-2019": {
+    "_note": "PHOTO PLACEHOLDER. Add a photo from Nepal around 2019 to /photos and set its file name and alt text here. While 'file' is empty, the timeline shows a typographic frame instead.",
+    "file": "",
+    "alt": "",
+    "caption": "",
+    "credit": ""
+  },
+  "journey-2026": {
+    "file": "stage-light-beams.jpg",
+    "alt": "Blue stage lights cut through a packed arena as J. Cole walks across a stage set with a parked car, the crowd holding up phones below.",
+    "focus": "55% 60%",
+    "caption": "",
+    "credit": ""
+  },
+  "live": {
+    "file": "spotlight-on-stage.jpg",
+    "alt": "J. Cole alone in a single spotlight on a dark stage, singing into a standing microphone, his face shown large on the screen above.",
+    "focus": "50% 50%",
+    "caption": "",
+    "credit": ""
+  },
+  "night-1": {
+    "file": "cole-among-the-crowd.jpg",
+    "crop": [0, 0.02, 1, 0.52],
+    "alt": "Phone lights scattered like stars across a dark arena, hands raised in the crowd below.",
+    "caption": "",
+    "credit": ""
+  },
+  "night-2": {
+    "file": "stage-light-beams.jpg",
+    "crop": [0, 0.44, 1, 0.905],
+    "alt": "A crowd under shafts of blue light, looking up toward the stage.",
+    "caption": "",
+    "credit": ""
+  },
+  "night-3": {
+    "file": "arena-from-the-upper-level.jpg",
+    "crop": [0.15, 0.06, 0.85, 0.5],
+    "alt": "The whole arena from above, every tier full, the stage glowing orange in the haze.",
+    "caption": "",
+    "credit": ""
+  }
+}

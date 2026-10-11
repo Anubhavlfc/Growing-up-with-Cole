@@ -1,0 +1,123 @@
+/* Design tokens: colour, type, spacing and motion.
+   Change the look of the whole site from here. */
+
+@font-face {
+  font-family: "Fraunces";
+  src: url("../fonts/fraunces-roman.woff2") format("woff2");
+  font-weight: 300 600;
+  font-style: normal;
+  font-display: swap;
+}
+@font-face {
+  font-family: "Fraunces";
+  src: url("../fonts/fraunces-italic.woff2") format("woff2");
+  font-weight: 300 500;
+  font-style: italic;
+  font-display: swap;
+}
+@font-face {
+  font-family: "Newsreader";
+  src: url("../fonts/newsreader-roman.woff2") format("woff2");
+  font-weight: 400 500;
+  font-style: normal;
+  font-display: swap;
+}
+@font-face {
+  font-family: "Newsreader";
+  src: url("../fonts/newsreader-italic.woff2") format("woff2");
+  font-weight: 400;
+  font-style: italic;
+  font-display: swap;
+}
+@font-face {
+  font-family: "Hanken Grotesk";
+  src: url("../fonts/hanken-grotesk.woff2") format("woff2");
+  font-weight: 400 600;
+  font-style: normal;
+  font-display: swap;
+}
+@font-face {
+  /* Only the five glyphs of नेपाल, used once on the timeline. */
+  font-family: "Nepal Devanagari";
+  src: url("../fonts/devanagari-nepal.woff2") format("woff2");
+  font-display: swap;
+}
+
+:root {
+  /* ---- Palette: concert night, warm paper, stage amber ---- */
+  --charcoal-950: #0b0908;
+  --charcoal-900: #100d0b;
+  --charcoal-800: #1a1512;
+  --charcoal-700: #2a231d;
+  --cream-50: #f6f0e5;
+  --cream-100: #f1e9db;
+  --cream-200: #e6dac6;
+  --sepia-400: #a99a85;
+  --sepia-600: #6b5c4c;
+  --bronze-500: #b27a3e;
+  --amber-300: #e9b26b;
+  --amber-400: #d6a35c;
+  --amber-700: #8a561e;
+  --ember-500: #e0853a;
+
+  /* ---- Section themes (background / text / secondary text / accent / hairline) ---- */
+  --night-bg: #100d0b;
+  --night-fg: #ece3d3;
+  --night-muted: #a99c88;
+  --night-accent: #d6a35c;
+  --night-rule: rgba(236, 227, 211, 0.16);
+
+  --paper-bg: #f1e9db;
+  --paper-fg: #2a221b;
+  --paper-muted: #6b5c4c;
+  --paper-accent: #8a561e;
+  --paper-rule: rgba(42, 34, 27, 0.16);
+
+  --dusk-bg: #1c1510;
+  --dusk-fg: #eadfcc;
+  --dusk-muted: #ab9b84;
+  --dusk-accent: #d9a35e;
+  --dusk-rule: rgba(234, 223, 204, 0.15);
+
+  --stage-bg: #120a06;
+  --stage-fg: #f3e5cd;
+  --stage-muted: #b9a283;
+  --stage-accent: #ebaa5c;
+  --stage-rule: rgba(243, 229, 205, 0.15);
+
+  --dawn-bg: #ece2d1;
+  --dawn-fg: #2b241d;
+  --dawn-muted: #685a4a;
+  --dawn-accent: #84521c;
+  --dawn-rule: rgba(43, 36, 29, 0.15);
+
+  /* ---- Type ---- */
+  --font-display: "Fraunces", "Iowan Old Style", "Palatino Linotype", Georgia, serif;
+  --font-body: "Newsreader", "Iowan Old Style", Charter, Georgia, serif;
+  --font-ui: "Hanken Grotesk", ui-sans-serif, system-ui, -apple-system, "Segoe UI", sans-serif;
+
+  --text-size: clamp(1.125rem, 1.05rem + 0.32vw, 1.3rem);
+  --leading: 1.72;
+  --measure: 35rem;
+  --para-gap: 1.25em;
+
+  --size-label: 0.72rem;
+  --tracking-label: 0.2em;
+  --size-statement: clamp(1.55rem, 1.2rem + 1.5vw, 2.25rem);
+  --size-statement-big: clamp(2rem, 1.3rem + 3.2vw, 3.6rem);
+  --size-chapter: clamp(2.6rem, 1.4rem + 5.4vw, 6.4rem);
+  --size-hero: clamp(3.4rem, 1.2rem + 9.2vw, 9.6rem);
+
+  /* ---- Space ---- */
+  --gutter: clamp(1.15rem, 0.6rem + 2.4vw, 3rem);
+  --chapter-gap: clamp(6rem, 4rem + 9vw, 12rem);
+  --bridge-height: clamp(9rem, 22vh, 16rem);
+
+  /* ---- Motion ---- */
+  --ease-out: cubic-bezier(0.16, 0.84, 0.24, 1);
+  --ease-in-out: cubic-bezier(0.65, 0, 0.35, 1);
+  --dur-quick: 220ms;
+  --dur-reveal: 1000ms;
+  --dur-slow: 1600ms;
+  --shift: 24px;
+}
