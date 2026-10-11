@@ -664,6 +664,7 @@ svg { display: block; }
 }
 .prose > .statement strong { font-weight: inherit; }
 .prose > .statement + p { margin-top: 2.2em; }
+.prose > .keepsake + p { margin-top: 0; }
 
 .prose > .statement--big {
   grid-column: wide;
@@ -764,6 +765,37 @@ svg { display: block; }
   box-shadow: 0 0 0 12px var(--bg), 0 0 0 13px var(--rule);
 }
 .prose > .pair + p { margin-top: 0; }
+
+/* Keepsakes: saved lyric cards, set small and slightly askew */
+.prose > .keepsake {
+  width: min(21rem, 78%);
+  margin-block: clamp(3rem, 7vw, 4.5rem);
+}
+.keepsake--left { justify-self: start; }
+.keepsake--right { justify-self: end; }
+.keepsake__frame {
+  position: relative;
+  display: block;
+  width: 100%;
+  padding: 0;
+  border: 0;
+  border-radius: 14px;
+  overflow: hidden;
+  background: var(--charcoal-800);
+  cursor: zoom-in;
+  box-shadow: 0 24px 60px -24px rgba(0, 0, 0, 0.55), 0 0 0 1px var(--rule);
+  transform: rotate(var(--tilt, -1.6deg));
+  transition: transform 700ms var(--ease-out), box-shadow 700ms var(--ease-out);
+}
+.keepsake--right .keepsake__frame { --tilt: 1.8deg; }
+.keepsake__frame:hover,
+.keepsake__frame:focus-visible { transform: rotate(0deg) translateY(-4px); box-shadow: 0 30px 70px -26px rgba(0, 0, 0, 0.6), 0 0 0 1px var(--rule); }
+.keepsake__frame picture, .keepsake__frame img { display: block; width: 100%; height: auto; }
+
+@media (min-width: 1000px) {
+  .keepsake--left { margin-left: -5rem; }
+  .keepsake--right { margin-right: -5rem; }
+}
 
 /* ============ Journey: Nepal 2019 to New York 2026 ============ */
 

@@ -146,6 +146,8 @@ Whenever I feel overwhelmed, disappointed, uncertain about the future, or find m
 
 The message is simple, but understanding it and actually living by it are two very different things.
 
+[[card card-love-yourz left]]
+
 There will always be someone who seems to have more than you. Someone with a better job, more money, greater recognition, or a life that appears closer to the one you want.
 
 And if your happiness depends entirely on reaching whatever level of success someone else has achieved, you'll probably spend your whole life chasing something that keeps moving further away.
@@ -281,6 +283,8 @@ But as I've grown older, I find myself connecting more deeply with the quieter i
 Gratitude. Humility. Family. Self-awareness. Finding peace with yourself. Learning that success and happiness aren't necessarily the same thing.
 
 I think that says as much about how I've changed as it does about the music itself.
+
+[[card card-change right]]
 
 At sixteen, I was fascinated by the idea of becoming successful.
 

@@ -1,6 +1,5 @@
 {
   "_readme": "Every photo the site uses is listed here. 'file' is a file in /photos. 'crop' (optional) is [left, top, right, bottom] as fractions of the original. 'caption' and 'credit' are optional and shown under the photo when set. Run `npm run build` after changing anything.",
-
   "hero": {
     "file": "arena-from-the-upper-level.jpg",
     "alt": "Looking down from the upper level of a packed arena glowing amber, a J. Cole Fall-Off Tour towel held up in the foreground.",
@@ -37,22 +36,49 @@
   },
   "night-1": {
     "file": "cole-among-the-crowd.jpg",
-    "crop": [0, 0.02, 1, 0.52],
+    "crop": [
+      0,
+      0.02,
+      1,
+      0.52
+    ],
     "alt": "Phone lights scattered like stars across a dark arena, hands raised in the crowd below.",
     "caption": "",
     "credit": ""
   },
   "night-2": {
     "file": "stage-light-beams.jpg",
-    "crop": [0, 0.44, 1, 0.905],
+    "crop": [
+      0,
+      0.44,
+      1,
+      0.905
+    ],
     "alt": "A crowd under shafts of blue light, looking up toward the stage.",
     "caption": "",
     "credit": ""
   },
   "night-3": {
     "file": "arena-from-the-upper-level.jpg",
-    "crop": [0.15, 0.06, 0.85, 0.5],
+    "crop": [
+      0.15,
+      0.06,
+      0.85,
+      0.5
+    ],
     "alt": "The whole arena from above, every tier full, the stage glowing orange in the haze.",
+    "caption": "",
+    "credit": ""
+  },
+  "card-love-yourz": {
+    "file": "lyric-card-love-yourz.jpg",
+    "alt": "A saved lyric card from \"Love Yourz\" by J. Cole: \"It's beauty in the struggle, ugliness in the success.\"",
+    "caption": "",
+    "credit": ""
+  },
+  "card-change": {
+    "file": "lyric-card-change.jpg",
+    "alt": "A saved lyric card from \"Change\" by J. Cole: \"I know you desperate for a change, let the pen glide / But the only real change come from inside.\"",
     "caption": "",
     "credit": ""
   }

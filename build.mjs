@@ -224,6 +224,16 @@ function renderPhoto(key, variant = "asym") {
       </figure>`;
 }
 
+// A small saved image (e.g. a lyric card from the author's phone), set like a keepsake.
+function renderCard(key, side) {
+  return `<figure class="keepsake keepsake--${side === "right" ? "right" : "left"}" data-reveal="rise">
+        <button class="keepsake__frame" type="button" ${lightboxAttrs(key)} aria-label="View image larger">
+          ${picture(key, { sizes: "(min-width: 1000px) 340px, 72vw" })}
+        </button>
+        ${caption(key)}
+      </figure>`;
+}
+
 function renderFilmstrip(prefix) {
   const keys = Object.keys(photos).filter((k) => k.startsWith(prefix + "-") && photos[k].file);
   const frames = keys.map((k, i) => `
@@ -248,10 +258,11 @@ function renderBlocks(blocks) {
   const push = (html) => (inScene ? sceneBuf : out).push(html);
 
   for (const b of blocks) {
-    const d = b.match(/^\[\[(\/?[\w-]+)(?:\s+([\w-]+))?\]\]$/);
+    const d = b.match(/^\[\[(\/?[\w-]+)(?:\s+([\w-]+))?(?:\s+([\w-]+))?\]\]$/);
     if (d) {
-      const [, name, arg] = d;
+      const [, name, arg, arg2] = d;
       if (name === "photo") push(renderPhoto(arg));
+      else if (name === "card") push(renderCard(arg, arg2 || "left"));
       else if (name === "pair") pairKey = arg;
       else if (name === "peak") push(`<div class="peak" aria-hidden="true">${wave(1, 42, "wave wave--peak")}</div>`);
       else if (name === "timeline") out.push("<!--JOURNEY-->");

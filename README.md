@@ -52,6 +52,7 @@ Layout markers sit on their own line and add no words to the essay:
 
 - `[[pair crowd-entrance]]`: the next paragraph is set beside that photo.
 - `[[photo key]]`: a single photograph.
+- `[[card key left]]` / `[[card key right]]`: a small saved image, like the lyric cards, set slightly askew to one side.
 - `[[timeline]]`: the Nepal 2019 to New York 2026 interlude.
 - `[[scene live]]` … `[[/scene]]`: the "Love Yourz" stage moment. The paragraphs between the markers scroll beside the photo.
 - `[[peak]]`: the loudest waveform, after the high point.
