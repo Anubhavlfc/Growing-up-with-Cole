@@ -1,0 +1,123 @@
+<svg class="kid" viewBox="0 0 400 500" role="img" aria-labelledby="kid-title">
+  <title id="kid-title">Illustration: a sixteen-year-old in his room in Nepal, nodding along in headphones to 2014 Forest Hills Drive on his phone, with prayer flags and the Himalaya at dusk outside the window.</title>
+  <defs>
+    <linearGradient id="kid-wall" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0" stop-color="#2b1e15"/>
+      <stop offset="1" stop-color="#140e0a"/>
+    </linearGradient>
+    <linearGradient id="kid-sky" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0" stop-color="#2a2233"/>
+      <stop offset=".45" stop-color="#7a4a3a"/>
+      <stop offset=".8" stop-color="#d98d52"/>
+      <stop offset="1" stop-color="#f0b977"/>
+    </linearGradient>
+    <linearGradient id="kid-screen" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0" stop-color="#ffe1a8"/>
+      <stop offset="1" stop-color="#e9a55c"/>
+    </linearGradient>
+    <radialGradient id="kid-phone-light" cx="0" cy="0" r="1" gradientUnits="userSpaceOnUse" gradientTransform="translate(172 276) scale(52 46)">
+      <stop offset="0" stop-color="#ffd394" stop-opacity=".42"/>
+      <stop offset="1" stop-color="#ffd394" stop-opacity="0"/>
+    </radialGradient>
+    <radialGradient id="kid-window-light" cx="0" cy="0" r="1" gradientUnits="userSpaceOnUse" gradientTransform="translate(265 300) scale(210 170)">
+      <stop offset="0" stop-color="#e9a55c" stop-opacity=".22"/>
+      <stop offset="1" stop-color="#e9a55c" stop-opacity="0"/>
+    </radialGradient>
+    <clipPath id="kid-window-clip"><rect x="182" y="62" width="176" height="218" rx="2"/></clipPath>
+  </defs>
+
+  <!-- room -->
+  <rect width="400" height="500" fill="url(#kid-wall)"/>
+  <rect width="400" height="500" fill="url(#kid-window-light)"/>
+
+  <!-- window: dusk over the Himalaya -->
+  <g clip-path="url(#kid-window-clip)">
+    <rect x="182" y="62" width="176" height="218" fill="url(#kid-sky)"/>
+    <g class="kid__stars" fill="#f6e7c8">
+      <circle cx="206" cy="84" r="1"/><circle cx="252" cy="76" r=".8"/><circle cx="318" cy="92" r="1.1"/>
+      <circle cx="338" cy="74" r=".7"/><circle cx="229" cy="104" r=".7"/><circle cx="286" cy="98" r=".9"/>
+    </g>
+    <path fill="#5a3b33" d="M182 236 L204 214 L214 222 L232 196 L246 210 L262 178 L276 198 L288 190 L304 208 L318 188 L334 206 L346 198 L358 212 L358 280 L182 280 Z"/>
+    <path fill="#f3d6b1" opacity=".85" d="M262 178 L270 190 L264 188 L258 194 L254 190 Z M232 196 L238 204 L232 203 L227 207 Z M318 188 L325 198 L319 196 L313 200 Z M288 190 L293 196 L287 196 Z"/>
+    <path fill="#3d2924" d="M182 256 L210 238 L236 250 L262 232 L290 248 L318 236 L358 250 L358 280 L182 280 Z"/>
+    <!-- prayer flags -->
+    <path d="M178 96 Q 270 136 362 104" fill="none" stroke="#c9a77c" stroke-width=".8"/>
+    <g class="kid__flags">
+      <rect x="192" y="102" width="12" height="15" fill="#5c7ea3" style="--d:0s"/>
+      <rect x="211" y="108" width="12" height="15" fill="#e7dfcf" style="--d:.3s"/>
+      <rect x="230" y="113" width="12" height="15" fill="#b4533b" style="--d:.6s"/>
+      <rect x="249" y="116" width="12" height="15" fill="#5d8858" style="--d:.9s"/>
+      <rect x="268" y="117" width="12" height="15" fill="#d8b347" style="--d:1.2s"/>
+      <rect x="287" y="116" width="12" height="15" fill="#5c7ea3" style="--d:1.5s"/>
+      <rect x="306" y="113" width="12" height="15" fill="#e7dfcf" style="--d:1.8s"/>
+      <rect x="325" y="109" width="12" height="15" fill="#b4533b" style="--d:2.1s"/>
+      <rect x="344" y="104" width="12" height="15" fill="#5d8858" style="--d:2.4s"/>
+    </g>
+  </g>
+  <!-- carved wooden frame -->
+  <rect x="176" y="56" width="188" height="230" fill="none" stroke="#4a3220" stroke-width="12" rx="3"/>
+  <rect x="176" y="56" width="188" height="230" fill="none" stroke="#7a5432" stroke-width="1" rx="3"/>
+  <path d="M270 62 V280 M182 170 H358" stroke="#4a3220" stroke-width="6"/>
+  <path d="M168 292 H372" stroke="#3a2618" stroke-width="10" stroke-linecap="round"/>
+
+  <!-- bed -->
+  <path fill="#21160f" d="M0 404 Q 200 392 400 404 L400 500 L0 500 Z"/>
+  <path fill="none" stroke="#3a2a1d" stroke-width="1.2" d="M20 430 Q 120 420 230 432 M60 462 Q 180 450 320 466"/>
+
+  <!-- the kid: amber rim light first, then the silhouette on top -->
+  <g class="kid__body">
+    <g transform="translate(2.2 -1.2)" fill="#e7a35c" stroke="#e7a35c" opacity=".85">
+      <use href="#kid-figure"/>
+    </g>
+    <g fill="#110b08" stroke="#110b08"><g id="kid-figure">
+      <!-- back, seat, hoodie -->
+      <path stroke="none" d="M104 270 C 92 286, 84 318, 84 352 C 84 380, 90 400, 108 410 L 168 412 L 150 360 C 152 330, 146 304, 134 286 Z"/>
+      <!-- hood -->
+      <path stroke="none" d="M96 262 C 92 276, 98 292, 110 296 L 126 282 Z"/>
+      <!-- thigh and shin, knees up -->
+      <path fill="none" stroke-width="30" stroke-linecap="round" stroke-linejoin="round" d="M120 396 L 206 338 L 222 402"/>
+      <!-- foot -->
+      <path stroke="none" d="M206 398 L 246 400 C 252 401, 252 410, 246 411 L 206 411 Z"/>
+      <!-- upper arm resting on the knee, forearm up to the phone -->
+      <path fill="none" stroke-width="17" stroke-linecap="round" stroke-linejoin="round" d="M120 300 L 170 338 L 182 296"/>
+      <!-- neck -->
+      <path stroke="none" d="M112 262 L 134 266 L 132 290 L 112 290 Z"/>
+      <!-- hands and phone -->
+      <circle stroke="none" cx="182" cy="294" r="8"/>
+    </g></g>
+  </g>
+
+  <!-- the head nods along, so it sits apart from the body -->
+  <g class="kid__head">
+    <g transform="translate(2.2 -1.2)" fill="#e7a35c" opacity=".85"><use href="#kid-headshape"/></g>
+    <g fill="#110b08"><g id="kid-headshape">
+      <!-- head in profile, facing the window -->
+      <path d="M117 214 C 136 213, 147 225, 148 239 L 153 250 C 154 253, 152 255, 149 255 L 149 259 C 150 262, 148 264, 146 264 L 145 269 C 144 275, 138 278, 131 277 L 120 276 C 104 274, 92 262, 92 243 C 92 226, 102 215, 117 214 Z"/>
+      <!-- hair -->
+      <path d="M92 240 C 88 222, 102 206, 120 207 C 136 207, 148 216, 149 230 C 140 224, 128 222, 116 226 C 108 230, 102 238, 92 240 Z"/>
+    </g></g>
+    <!-- headphones -->
+    <path fill="none" stroke="#3b2d22" stroke-width="6" stroke-linecap="round" d="M103 246 C 98 218, 116 203, 134 207 C 143 209, 149 216, 150 226"/>
+    <path fill="none" stroke="#e9b26b" stroke-width="1.1" stroke-linecap="round" opacity=".8" d="M106 232 C 108 216, 120 207, 134 209 C 141 210, 146 215, 148 221"/>
+    <rect x="98" y="235" width="22" height="30" rx="10" fill="#3b2d22"/>
+    <rect x="98" y="235" width="22" height="30" rx="10" fill="none" stroke="#e9b26b" stroke-width="1" opacity=".7"/>
+    <rect x="114" y="239" width="7" height="22" rx="3.5" fill="#2a1f17"/>
+  </g>
+
+  <!-- phone glow on the face -->
+  <rect class="kid__glow" width="400" height="500" fill="url(#kid-phone-light)" style="mix-blend-mode:screen"/>
+  <g transform="translate(180 284) rotate(-24)">
+    <rect x="-9" y="-15" width="18" height="30" rx="3" fill="#110b08"/>
+    <rect x="-7.5" y="-13" width="15" height="24" rx="1.5" fill="url(#kid-screen)"/>
+    <!-- a house with someone sitting on the roof, small as a thumbnail -->
+    <path d="M-5 2 L0 -4 L5 2 V7 H-5 Z" fill="#6b3f22"/>
+    <circle cx="0.6" cy="-6.2" r="1" fill="#6b3f22"/>
+  </g>
+
+  <!-- the music, leaving the headphones -->
+  <g class="kid__sound" fill="none" stroke="#e9b26b" stroke-width="1.4" stroke-linecap="round">
+    <path d="M94 238 A 16 16 0 0 0 94 262" style="--d:0s"/>
+    <path d="M84 230 A 28 28 0 0 0 84 270" style="--d:.45s"/>
+    <path d="M73 222 A 40 40 0 0 0 73 278" style="--d:.9s"/>
+  </g>
+</svg>

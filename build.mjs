@@ -135,7 +135,7 @@ const lightboxAttrs = (key) =>
 // A single line whose loudness follows the story: quiet in 2019, loudest at
 // "Love Yourz", flat at the very end.
 
-function wavePath(amp, seed, { w = 1000, h = 80, n = 220, grow = false, vertical = false } = {}) {
+function wavePath(amp, seed, { w = 1000, h = 80, n = 220 } = {}) {
   const mid = h / 2;
   let r = seed * 9301 + 49297;
   const rand = () => ((r = (r * 9301 + 49297) % 233280) / 233280);
@@ -144,13 +144,10 @@ function wavePath(amp, seed, { w = 1000, h = 80, n = 220, grow = false, vertical
   const pts = [];
   for (let i = 0; i <= n; i++) {
     const x = i / n;
-    const env = grow ? 1.35 * Math.pow(x, 1.3) * Math.min(1, (1 - x) * 14)
-                     : Math.pow(Math.sin(Math.PI * x), 0.9);
+    const env = Math.pow(Math.sin(Math.PI * x), 0.9);
     const v = 0.5 * Math.sin(x * f[0] + ph[0]) + 0.28 * Math.sin(x * f[1] + ph[1]) +
               0.15 * Math.sin(x * f[2] + ph[2]) + 0.07 * Math.sin(x * f[3] + ph[3]);
-    const px = (x * w).toFixed(1);
-    const py = (mid - v * env * amp * (mid - 4)).toFixed(2);
-    pts.push(vertical ? `${py} ${px}` : `${px} ${py}`);
+    pts.push(`${(x * w).toFixed(1)} ${(mid - v * env * amp * (mid - 4)).toFixed(2)}`);
   }
   return "M" + pts.join(" L");
 }
@@ -162,56 +159,63 @@ const wave = (amp, seed, cls = "wave") =>
 
 // ---------- blocks ----------
 
+// The interlude between the opening and chapter one: Kathmandu in 2019, the flight
+// to New York drawn on a real map, then the Garden in 2026.
+// The illustration and map are generated files in src/ (see scripts/make_map.mjs).
 function renderJourney() {
+  const map = readJSON("src/journey-map.json");
+  const km = map.km.toLocaleString("en-US");
+  const miles = map.miles.toLocaleString("en-US");
+  const at = ([x, y]) => `--x:${((x / map.width) * 100).toFixed(2)}%;--y:${((y / map.height) * 100).toFixed(2)}%`;
+
   const then = photos["journey-2019"];
+  // A real 2019 photo replaces the illustration once one is set in content/photos.json ("journey-2019").
   const thenFrame = then && then.file && manifest["journey-2019"]
-    ? `<button class="journey__frame" type="button" ${lightboxAttrs("journey-2019")}>
-        ${picture("journey-2019", { sizes: "(min-width: 900px) 30vw, 80vw", cls: "parallax-img" })}
+    ? `<button class="journey__frame" type="button" ${lightboxAttrs("journey-2019")} aria-label="View photo larger">
+        ${picture("journey-2019", { sizes: "(min-width: 900px) 26rem, 86vw", cls: "parallax-img" })}
       </button>`
-    // PHOTO PLACEHOLDER: shown until a 2019 photo is set in content/photos.json ("journey-2019").
-    : `<div class="journey__frame journey__frame--empty" aria-hidden="true">
-        <span class="journey__devanagari" lang="ne">नेपाल</span>
-        ${wave(0.12, 3, "wave wave--still")}
+    : `<div class="journey__art" data-kid>
+        ${read("src/nepal-2019.svg").trim()}
       </div>`;
+
   return `
-  <section class="journey" id="journey" aria-label="2019 to 2026: from Nepal to New York" data-journey>
-    <div class="journey__inner">
-      <figure class="journey__stop journey__stop--then" data-reveal="rise">
-        ${thenFrame}
-        <figcaption>
-          <span class="journey__year">2019</span>
-          <span class="journey__place">Nepal</span>
-          <span class="journey__line">${smartQuotes('"listening to his music for the very first time."')}</span>
-        </figcaption>
-      </figure>
-      <div class="journey__path" aria-hidden="true">
-        <svg class="journey__wave journey__wave--h" viewBox="0 0 1000 120" preserveAspectRatio="none" focusable="false">
-          <path class="journey__wave-base" d="${wavePath(1, 7, { h: 120, grow: true })}"/>
-          <path class="journey__wave-live" d="${wavePath(1, 7, { h: 120, grow: true })}" pathLength="1"/>
-        </svg>
-        <svg class="journey__wave journey__wave--v" viewBox="0 0 120 1000" preserveAspectRatio="none" focusable="false">
-          <path class="journey__wave-base" d="${wavePath(1, 7, { h: 120, grow: true, vertical: true })}"/>
-          <path class="journey__wave-live" d="${wavePath(1, 7, { h: 120, grow: true, vertical: true })}" pathLength="1"/>
-        </svg>
-        <p class="journey__span">Six years</p>
+  <section class="journey theme-night" id="journey" aria-label="2019 to 2026: from Kathmandu to New York" data-journey>
+    <figure class="journey__stop journey__stop--then" data-reveal="rise">
+      ${thenFrame}
+      <figcaption>
+        <span class="journey__year">2019</span>
+        <span class="journey__place">Kathmandu, Nepal</span>
+        <span class="journey__line">${smartQuotes('"listening to his music for the very first time."')}</span>
+        <span class="journey__playing"><span class="eq" aria-hidden="true"><i></i><i></i><i></i><i></i></span>Now playing <em>2014 Forest Hills Drive</em></span>
+      </figcaption>
+    </figure>
+
+    <div class="journey__flight" data-flight>
+      <div class="journey__stage">
+        <p class="journey__route" aria-hidden="true"><span>Kathmandu</span><i></i><span>New York</span></p>
+        <div class="journey__map" data-map>
+          ${read("src/journey-map.svg").trim()}
+          <span class="map-chip map-chip--ktm" data-chip="ktm" style="${at(map.ktm)}" aria-hidden="true"><b>Kathmandu<span class="map-chip__more">, Nepal</span></b><small>2019</small></span>
+          <span class="map-chip map-chip--nyc" data-chip="nyc" style="${at(map.nyc)}" aria-hidden="true"><b>New York<span class="map-chip__more"> City, USA</span></b><small>2026</small></span>
+        </div>
+        <p class="journey__distance">
+          <span class="sr-only">${km} kilometres (${miles} miles) between Kathmandu and New York.</span>
+          <span class="journey__km" aria-hidden="true"><span data-count="${map.km}">${km}</span> km</span>
+          <span class="journey__mi" aria-hidden="true"><span data-count="${map.miles}">${miles}</span> miles between Kathmandu and New York</span>
+        </p>
       </div>
-      <ol class="journey__waypoints">
-        <li style="--at:.2">Moving away from home.</li>
-        <li style="--at:.4">Growing older.</li>
-        <li style="--at:.6">Meeting new people.</li>
-        <li style="--at:.8">Facing new responsibilities.</li>
-      </ol>
-      <figure class="journey__stop journey__stop--now" data-reveal="rise">
-        <button class="journey__frame" type="button" ${lightboxAttrs("journey-2026")} aria-label="View photo larger">
-          ${picture("journey-2026", { sizes: "(min-width: 900px) 30vw, 80vw", cls: "parallax-img" })}
-        </button>
-        <figcaption>
-          <span class="journey__year">2026</span>
-          <span class="journey__place">New York City</span>
-          <span class="journey__line">${smartQuotes('"standing inside Madison Square Garden"')}</span>
-        </figcaption>
-      </figure>
     </div>
+
+    <figure class="journey__stop journey__stop--now" data-reveal="rise">
+      <button class="journey__frame" type="button" ${lightboxAttrs("journey-2026")} aria-label="View photo larger">
+        ${picture("journey-2026", { sizes: "(min-width: 900px) 26rem, 86vw", cls: "parallax-img" })}
+      </button>
+      <figcaption>
+        <span class="journey__year">2026</span>
+        <span class="journey__place">New York City</span>
+        <span class="journey__line">${smartQuotes('"standing inside Madison Square Garden"')}</span>
+      </figcaption>
+    </figure>
   </section>`;
 }
 

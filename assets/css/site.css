@@ -36,6 +36,18 @@ svg { display: block; }
   border-radius: 2px;
 }
 
+.sr-only {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  margin: -1px;
+  padding: 0;
+  overflow: hidden;
+  clip-path: inset(50%);
+  white-space: nowrap;
+  border: 0;
+}
+
 .skip {
   position: fixed;
   left: 1rem;
@@ -797,153 +809,346 @@ svg { display: block; }
   .keepsake--right { margin-right: -5rem; }
 }
 
-/* ============ Journey: Nepal 2019 to New York 2026 ============ */
+/* ============ Journey: Kathmandu 2019 to New York 2026 ============ */
 
 .journey {
   position: relative;
-  padding: clamp(5rem, 12vw, 10rem) var(--gutter) clamp(6rem, 13vw, 11rem);
-  overflow: hidden;
+  padding: clamp(5rem, 12vw, 9rem) 0 clamp(6rem, 13vw, 10rem);
+  overflow: clip;
 }
 .journey::before {
   content: "";
   position: absolute;
   inset: 0;
-  background: radial-gradient(ellipse 50% 60% at 85% 50%, rgba(224, 133, 58, 0.09), transparent 70%);
+  background:
+    radial-gradient(ellipse 40% 22% at 22% 8%, rgba(224, 133, 58, 0.08), transparent 70%),
+    radial-gradient(ellipse 40% 22% at 78% 94%, rgba(224, 133, 58, 0.09), transparent 70%);
   pointer-events: none;
 }
-.journey__inner {
+
+/* 2019 and 2026: a picture beside its year */
+.journey__stop {
   position: relative;
-  max-width: 82rem;
-  margin: 0 auto;
   display: grid;
-  grid-template-columns: minmax(0, 0.9fr) minmax(0, 1.25fr) minmax(0, 1fr);
-  grid-template-areas: "then path now" "then way now";
-  grid-template-rows: auto auto;
-  column-gap: clamp(1rem, 3vw, 3rem);
-  align-items: center;
+  grid-template-columns: minmax(0, 26rem) minmax(0, 21rem);
+  justify-content: center;
+  align-items: end;
+  gap: clamp(1.75rem, 4.5vw, 4.5rem);
+  margin: 0;
+  padding: 0 var(--gutter);
 }
-.journey__stop { margin: 0; }
-.journey__stop--then { grid-area: then; }
-.journey__stop--now { grid-area: now; }
-.journey__frame { aspect-ratio: 4 / 5; }
-.journey__stop--then .journey__frame { width: 82%; }
+.journey__stop--now { grid-template-columns: minmax(0, 21rem) minmax(0, 26rem); }
+.journey__stop--now .journey__frame { grid-column: 2; grid-row: 1; }
+.journey__stop--now figcaption { grid-column: 1; grid-row: 1; justify-items: end; text-align: right; }
+.journey__frame,
+.journey__art { aspect-ratio: 4 / 5; }
 .journey__stop--now .journey__frame { box-shadow: 0 30px 80px -30px rgba(224, 133, 58, 0.35); }
-.journey__frame--empty {
-  display: grid;
-  place-items: center;
-  cursor: default;
-  background:
-    radial-gradient(ellipse at 50% 40%, rgba(178, 122, 62, 0.16), transparent 70%),
-    linear-gradient(160deg, #241b14, #15100c);
-  box-shadow: inset 0 0 0 1px rgba(236, 227, 211, 0.08);
+.journey__art {
+  position: relative;
+  overflow: hidden;
+  border-radius: 2px;
+  background: #140e0a;
+  box-shadow: 0 0 0 1px rgba(236, 227, 211, 0.07), 0 40px 90px -40px rgba(224, 133, 58, 0.4);
 }
-.journey__devanagari {
-  font-family: "Nepal Devanagari", "Noto Serif Devanagari", "Kohinoor Devanagari", serif;
-  font-size: clamp(2.6rem, 1.8rem + 3vw, 4.6rem);
-  line-height: 1;
-  color: rgba(233, 178, 107, 0.55);
-}
-.journey__frame--empty .wave {
-  position: absolute;
-  left: 12%;
-  right: 12%;
-  bottom: 14%;
-  width: 76%;
-  height: 28px;
-}
-.journey__frame--empty .wave path { stroke: rgba(233, 178, 107, 0.5); }
+.journey__art svg { width: 100%; height: 100%; }
+
 .journey figcaption {
   display: grid;
   gap: 0.35rem;
-  margin-top: 1.4rem;
+  padding-bottom: 0.3rem;
 }
 .journey__year {
-  font: 300 clamp(3rem, 2rem + 4vw, 5.6rem)/0.9 var(--font-display);
+  font: 300 clamp(3.4rem, 2rem + 5vw, 6.4rem)/0.9 var(--font-display);
   letter-spacing: -0.04em;
   color: var(--fg);
 }
 .journey__stop--now .journey__year { color: var(--amber-300); }
 .journey__place {
+  margin-top: 0.5rem;
   font: 500 var(--size-label)/1 var(--font-ui);
   letter-spacing: var(--tracking-label);
   text-transform: uppercase;
   color: var(--accent);
-  margin-top: 0.4rem;
 }
 .journey__line {
   margin-top: 0.4rem;
-  font: italic 400 1rem/1.45 var(--font-body);
-  color: var(--muted);
   max-width: 19rem;
+  font: italic 400 1.05rem/1.45 var(--font-body);
+  color: var(--muted);
+}
+.journey__playing {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 0.35rem 0.6rem;
+  margin-top: 1.3rem;
+  padding-top: 1.1rem;
+  border-top: 1px solid var(--rule);
+  font: 500 var(--size-label)/1.3 var(--font-ui);
+  letter-spacing: var(--tracking-label);
+  text-transform: uppercase;
+  color: var(--muted);
+}
+.journey__playing em {
+  font: italic 400 1.05rem/1.3 var(--font-body);
+  letter-spacing: 0;
+  text-transform: none;
+  color: var(--fg);
 }
 
-.journey__path { grid-area: path; position: relative; align-self: end; }
-.journey__wave { width: 100%; overflow: visible; }
-.journey__wave--h { height: clamp(90px, 10vw, 140px); }
-.journey__wave--v { display: none; }
-.journey__wave path { fill: none; vector-effect: non-scaling-stroke; stroke-linecap: round; }
-.journey__wave-base { stroke: var(--rule); stroke-width: 1; }
-.journey__wave-live {
-  stroke: var(--amber-400);
-  stroke-width: 1.5;
-  stroke-dasharray: 1;
-  stroke-dashoffset: calc(1 - var(--tl, 1));
+/* A small equaliser beside "Now playing" */
+.eq { display: inline-flex; align-items: flex-end; gap: 2px; height: 0.85rem; }
+.eq i {
+  width: 3px;
+  height: 100%;
+  border-radius: 1px;
+  background: var(--amber-400);
+  transform-origin: 50% 100%;
+  transform: scaleY(0.55);
+  animation: eq 0.9s ease-in-out infinite alternate;
 }
-.journey__span {
-  position: absolute;
-  left: 50%;
-  top: -1.6rem;
-  margin: 0;
-  transform: translateX(-50%);
+.eq i:nth-child(2) { animation-duration: 1.15s; animation-delay: -0.4s; }
+.eq i:nth-child(3) { animation-duration: 0.75s; animation-delay: -0.2s; }
+.eq i:nth-child(4) { animation-duration: 1.05s; animation-delay: -0.7s; }
+@keyframes eq { from { transform: scaleY(0.2); } to { transform: scaleY(1); } }
+
+/* The 2019 illustration moves a little: a nod to the beat, the sound
+   leaving the headphones, prayer flags in the wind, stars. */
+.kid__head {
+  transform-box: view-box;
+  transform-origin: 124px 276px;
+  animation: kid-nod 0.8s cubic-bezier(0.45, 0, 0.55, 1) infinite;
+}
+@keyframes kid-nod { 0%, 100% { transform: rotate(0deg); } 38% { transform: rotate(4deg); } }
+.kid__sound path {
+  transform-box: view-box;
+  transform-origin: 108px 250px;
+  animation: kid-sound 2.4s ease-out infinite;
+  animation-delay: calc(var(--d) * -1.78);
+}
+@keyframes kid-sound {
+  0% { opacity: 0; transform: scale(0.8); }
+  25% { opacity: 0.95; }
+  100% { opacity: 0; transform: scale(1.3); }
+}
+.kid__flags rect {
+  transform-box: fill-box;
+  transform-origin: 50% 0;
+  animation: kid-flag 2.6s ease-in-out infinite alternate;
+  animation-delay: calc(var(--d) * -1);
+}
+@keyframes kid-flag { from { transform: rotate(-6deg) skewX(-5deg); } to { transform: rotate(6deg) skewX(5deg); } }
+.kid__stars circle { animation: kid-twinkle 3.4s ease-in-out infinite alternate; }
+.kid__stars circle:nth-child(2n) { animation-delay: -1.6s; }
+.kid__stars circle:nth-child(3n) { animation-duration: 4.6s; animation-delay: -2.8s; }
+@keyframes kid-twinkle { from { opacity: 1; } to { opacity: 0.2; } }
+.kid__glow { animation: kid-glow 1.6s ease-in-out infinite; }
+@keyframes kid-glow { 0%, 100% { opacity: 1; } 50% { opacity: 0.72; } }
+.js .journey__stop--then:not(.is-playing) :is(.journey__art *, .eq i) { animation-play-state: paused; }
+
+/* ---- The flight: Kathmandu to New York on a real map ---- */
+
+.journey__flight { position: relative; margin: clamp(4.5rem, 10vw, 8rem) 0; }
+.journey__stage { position: relative; padding: 0 var(--gutter); }
+.journey__route {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.9rem;
+  margin: 0 0 1.4rem;
   font: 500 var(--size-label)/1 var(--font-ui);
   letter-spacing: var(--tracking-label);
   text-transform: uppercase;
   color: var(--muted);
-  white-space: nowrap;
 }
-.journey__waypoints {
-  grid-area: way;
+.journey__route i {
+  width: 4rem;
+  height: 3px;
+  background: radial-gradient(circle, var(--amber-400) 1px, transparent 1.5px) 0 50% / 7px 3px repeat-x;
+}
+
+.journey__map {
   position: relative;
-  align-self: start;
-  height: 5.5rem;
-  margin: 1rem 0 0;
-  padding: 0;
-  list-style: none;
+  width: min(100%, 84rem);
+  margin: 0 auto;
+  aspect-ratio: 1600 / 760;
+  overflow: hidden;
+  isolation: isolate;
 }
-.journey__waypoints li {
-  position: absolute;
-  top: 0;
-  left: calc(var(--at) * 100%);
-  width: max-content;
-  max-width: 9rem;
-  padding-top: 1.2rem;
-  transform: translateX(-50%);
-  text-align: center;
-  font: italic 400 0.95rem/1.3 var(--font-body);
-  color: var(--muted);
-  opacity: var(--wp-o, 1);
-  transition: opacity 600ms ease, color 600ms ease;
-}
-.journey__waypoints li:nth-child(even) { top: 2.2rem; }
-.journey__waypoints li::before {
+.journey__map > .map { position: absolute; inset: 0; width: 100%; height: 100%; }
+/* soft edges, so the map dissolves into the page */
+.journey__map::after {
   content: "";
   position: absolute;
+  inset: 0;
+  z-index: 2;
+  pointer-events: none;
+  background:
+    linear-gradient(90deg, var(--bg), transparent 8%, transparent 92%, var(--bg)),
+    linear-gradient(180deg, var(--bg), transparent 12%, transparent 86%, var(--bg));
+}
+
+.map__graticule { fill: none; stroke: rgba(236, 227, 211, 0.06); stroke-width: 1; vector-effect: non-scaling-stroke; }
+.map__land { fill: url(#map-land); stroke: rgba(233, 178, 107, 0.28); stroke-width: 0.8; vector-effect: non-scaling-stroke; }
+.map__borders { fill: none; stroke: rgba(236, 227, 211, 0.14); stroke-width: 0.7; vector-effect: non-scaling-stroke; }
+.map__country--usa { fill: rgba(214, 163, 92, 0.22); stroke: rgba(233, 178, 107, 0.55); stroke-width: 1; vector-effect: non-scaling-stroke; }
+.map__country--nepal { fill: var(--amber-400); stroke: var(--amber-300); stroke-width: 1; vector-effect: non-scaling-stroke; }
+.map__region { fill: rgba(236, 227, 211, 0.34); font: 600 13px var(--font-ui); letter-spacing: 0.32em; text-anchor: middle; }
+.map__region--near { display: none; }
+.map__route { fill: none; stroke: var(--amber-300); stroke-width: 2.6; stroke-linecap: round; stroke-dasharray: 0.1 9; }
+.map__dot { fill: var(--amber-300); }
+.map__place--nyc .map__dot { fill: var(--cream-50); }
+.map__plane { fill: var(--cream-50); }
+
+/* City labels */
+.map-chip {
+  position: absolute;
+  left: var(--x);
+  top: var(--y);
+  z-index: 4;
+  display: flex;
+  align-items: baseline;
+  gap: 0.55rem;
+  padding: 0.5rem 0.8rem;
+  border: 1px solid rgba(233, 178, 107, 0.45);
+  border-radius: 999px;
+  background: rgba(16, 13, 11, 0.74);
+  -webkit-backdrop-filter: blur(6px);
+  backdrop-filter: blur(6px);
+  box-shadow: 0 10px 30px -10px rgba(0, 0, 0, 0.6);
+  font: 600 0.8rem/1 var(--font-ui);
+  color: var(--cream-50);
+  white-space: nowrap;
+  pointer-events: none;
+  transition: opacity 500ms ease, scale 500ms var(--ease-out);
+}
+.map-chip b { font-weight: 600; }
+.map-chip small { font: 500 0.66rem/1 var(--font-ui); letter-spacing: 0.14em; color: var(--amber-300); }
+/* Kathmandu's label sits below-left of the dot, New York's below-right: the route leaves both clear. */
+.map-chip--ktm { transform: translate(calc(-100% - 12px), 12px); }
+.map-chip--nyc { transform: translate(12px, 12px); }
+/* On a phone the two labels end up side by side, so each hangs inward from its dot. */
+.is-narrow .map-chip { padding: 0.45rem 0.7rem; font-size: 0.74rem; }
+.is-narrow .map-chip__more { display: none; }
+.is-narrow .map-chip--ktm { transform: translate(calc(-100% + 14px), 14px); }
+.is-narrow .map-chip--nyc { transform: translate(-14px, 14px); }
+@media (max-width: 640px) {
+  .journey__flight:not(.is-live) .map-chip { padding: 0.4rem 0.6rem; font-size: 0.7rem; }
+  .journey__flight:not(.is-live) .map-chip__more { display: none; }
+  .journey__flight:not(.is-live) .map-chip--ktm { transform: translate(calc(-100% + 12px), 10px); }
+  .journey__flight:not(.is-live) .map-chip--nyc { transform: translate(-12px, 10px); }
+}
+
+.journey__distance {
+  display: grid;
+  justify-items: center;
+  gap: 0.35rem;
+  margin: 1.6rem 0 0;
+  text-align: center;
+}
+.journey__km {
+  font: 300 clamp(2.8rem, 1.6rem + 4.4vw, 5.4rem)/0.95 var(--font-display);
+  letter-spacing: -0.035em;
+  font-variant-numeric: tabular-nums lining-nums;
+  color: var(--fg);
+}
+.journey__km > span { color: var(--amber-300); }
+.journey__mi { font: italic 400 1.02rem/1.4 var(--font-body); color: var(--muted); }
+.journey__mi > span { font-variant-numeric: tabular-nums; }
+
+/* Animated version (set up by site.js unless the reader prefers reduced motion):
+   the map stays on screen while the page scrolls past, zooming out from Nepal
+   as the plane flies the route. */
+.journey__flight.is-live { height: 380vh; margin: 1rem 0; }
+.is-live .journey__stage {
+  position: sticky;
   top: 0;
+  display: flex;
+  flex-direction: column;
+  height: 100vh;
+  height: 100svh;
+  padding: 4.9rem 0 1.5rem;
+}
+.is-live .journey__route { margin-bottom: 0.6rem; }
+.is-live .journey__map { flex: 1 1 auto; min-height: 0; width: 100%; aspect-ratio: auto; }
+.is-live .map__static,
+.is-live .map__labels { display: none; }
+.is-live .map-chip { left: 0; top: 0; translate: var(--px, -999px) var(--py, -999px); }
+.is-live .map-chip--nyc:not(.is-on) { opacity: 0; scale: 0.85; }
+/* The distance sits under the arc, where the route never goes. */
+.is-live .journey__distance {
+  position: absolute;
   left: 50%;
-  width: 7px;
-  height: 7px;
-  margin-left: -3.5px;
-  border-radius: 50%;
-  border: 1px solid var(--muted);
-  transition: background-color 600ms ease, border-color 600ms ease, box-shadow 600ms ease;
+  bottom: 2.4rem;
+  z-index: 5;
+  margin: 0;
+  transform: translateX(-50%);
+  white-space: nowrap;
+  text-shadow: 0 2px 24px var(--bg), 0 0 6px var(--bg);
 }
-.js .journey__waypoints li { --wp-o: 0.35; }
-.js .journey__waypoints li.is-passed { --wp-o: 1; color: var(--fg); }
-.journey__waypoints li.is-passed::before {
-  background: var(--amber-400);
-  border-color: var(--amber-400);
-  box-shadow: 0 0 0 5px rgba(214, 163, 92, 0.15);
+
+.journey__labels { position: absolute; inset: 0; z-index: 1; pointer-events: none; }
+.map-label {
+  position: absolute;
+  left: 0;
+  top: 0;
+  translate: var(--px) var(--py);
+  transform: translate(-50%, -50%);
+  opacity: var(--o, 1);
+  font: 600 0.66rem/1 var(--font-ui);
+  letter-spacing: 0.3em;
+  text-transform: uppercase;
+  color: rgba(236, 227, 211, 0.42);
+  white-space: nowrap;
 }
+.map-label--small { font: italic 400 0.95rem/1 var(--font-body); letter-spacing: 0.03em; text-transform: none; color: rgba(236, 227, 211, 0.6); }
+.map-label--peak {
+  transform: translate(-5px, -50%);
+  padding-left: 15px;
+  font: italic 400 0.88rem/1 var(--font-body);
+  letter-spacing: 0.02em;
+  text-transform: none;
+  color: rgba(236, 227, 211, 0.75);
+}
+.map-label--peak::before {
+  content: "";
+  position: absolute;
+  left: 0;
+  top: 50%;
+  margin-top: -5px;
+  border: 5px solid transparent;
+  border-top: 0;
+  border-bottom: 9px solid var(--cream-200);
+}
+
+.journey__live { position: absolute; inset: 0; z-index: 3; width: 100%; height: 100%; overflow: visible; pointer-events: none; }
+.live__ahead { fill: none; stroke: rgba(236, 227, 211, 0.24); stroke-width: 2; stroke-linecap: round; stroke-dasharray: 0.1 8; }
+.live__glow { fill: none; stroke: rgba(233, 178, 107, 0.2); stroke-width: 8; stroke-linecap: round; filter: blur(3px); }
+.live__trail {
+  fill: none;
+  stroke: var(--amber-300);
+  stroke-width: 2.8;
+  stroke-linecap: round;
+  stroke-dasharray: 0.1 8;
+  animation: live-march 0.9s linear infinite;
+}
+@keyframes live-march { to { stroke-dashoffset: -8.1; } }
+.live__plane { fill: var(--cream-50); filter: drop-shadow(0 4px 7px rgba(0, 0, 0, 0.6)); transition: opacity 400ms ease; }
+.live__plane:not(.is-flying) { opacity: 0; }
+.live__dot { fill: var(--cream-50); stroke: var(--amber-300); stroke-width: 2; }
+.live__ring {
+  fill: none;
+  stroke: var(--amber-300);
+  stroke-width: 1.5;
+  transform-box: fill-box;
+  transform-origin: center;
+  animation: live-ring 2.4s ease-out infinite;
+}
+@keyframes live-ring { from { opacity: 0.8; transform: scale(1); } to { opacity: 0; transform: scale(3.4); } }
+.live__place--nyc .live__dot { fill: var(--bg); stroke: var(--cream-50); stroke-width: 1.5; transition: fill 400ms ease; }
+.live__place--nyc .live__ring { display: none; }
+.live__place--nyc.is-on .live__dot { fill: var(--cream-50); }
+.live__place--nyc.is-on .live__ring { display: block; stroke: var(--cream-50); }
 
 /* ============ Tonal bridges between sections ============ */
 
@@ -1285,37 +1490,11 @@ svg { display: block; }
   .photo--asym .photo__frame { box-shadow: none; }
   .photo__caption { padding-inline: var(--gutter); }
 
-  .journey__inner {
-    grid-template-columns: 3.2rem minmax(0, 1fr);
-    grid-template-areas: "then then" "path way" "now now";
-    row-gap: 0;
-    max-width: 34rem;
-  }
-  .journey__stop--then .journey__frame { width: 72%; }
-  .journey__stop--now { margin-top: 1rem; }
-  .journey__stop--now .journey__frame { width: 100%; }
-  .journey__path { align-self: stretch; height: 26rem; margin-top: 2rem; }
-  .journey__wave--h { display: none; }
-  .journey__wave--v { display: block; height: 100%; width: 3.2rem; }
-  .journey__span {
-    top: 50%;
-    left: 1.6rem;
-    transform: translate(-50%, -50%) rotate(-90deg);
-    background: var(--bg);
-    padding: 0.3rem 0.6rem;
-  }
-  .journey__waypoints { height: 26rem; margin: 2rem 0 0 1rem; }
-  .journey__waypoints li,
-  .journey__waypoints li:nth-child(even) {
-    top: calc(var(--at) * 100%);
-    left: 0;
-    max-width: none;
-    padding: 0 0 0 1.4rem;
-    transform: translateY(-50%);
-    text-align: left;
-    font-size: 1.05rem;
-  }
-  .journey__waypoints li::before { top: 50%; left: 0; margin: -3.5px 0 0; }
+  .journey__stop,
+  .journey__stop--now { grid-template-columns: minmax(0, 1fr); max-width: 30rem; margin-inline: auto; gap: 1.6rem; }
+  .journey__stop--now .journey__frame,
+  .journey__stop--now figcaption { grid-column: 1; grid-row: auto; }
+  .journey__stop--now figcaption { justify-items: start; text-align: left; }
 
   .scene {
     grid-template-columns: minmax(0, 1fr);
@@ -1381,8 +1560,7 @@ svg { display: block; }
     clip-path: none;
   }
   .js .wave path, .js [data-reveal="sign"] .signature__line path { stroke-dashoffset: 0; }
-  .journey__wave-live { stroke-dashoffset: 0; }
-  .js .journey__waypoints li { --wp-o: 1; }
+  .eq i, .journey__art * { animation: none !important; }
   .filmstrip__track { transform: none; }
 }
 

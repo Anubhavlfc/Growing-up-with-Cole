@@ -14,7 +14,7 @@
     "credit": ""
   },
   "journey-2019": {
-    "_note": "PHOTO PLACEHOLDER. Add a photo from Nepal around 2019 to /photos and set its file name and alt text here. While 'file' is empty, the timeline shows a typographic frame instead.",
+    "_note": "Optional. Add a photo from Nepal around 2019 to /photos and set its file name and alt text here to show it in place of the illustration (src/nepal-2019.svg). While 'file' is empty, the illustration is shown.",
     "file": "",
     "alt": "",
     "caption": "",
